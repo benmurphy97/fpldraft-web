@@ -1,14 +1,16 @@
-from flask import render_template, request, flash, redirect, url_for
+from flask import render_template, request, redirect, url_for
 from app import app
 from app.forms import LeagueIDForm
 import json
 from urllib.request import urlopen 
 import pandas as pd
 
+
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template('find_league_id.html', title='Find league id')
+
 
 @app.route('/find_league_id')
 def find_league_id():
@@ -25,13 +27,13 @@ def user_input_league_id():
     
     return render_template('user_input_league_id.html', title='League ID Input', form=form)
 
+
 @app.route('/chart', methods=['GET', 'POST'])
 def chart():
     
     league_id = request.form.get('league_id')
 
     # define url for fpl api
-    # url = "https://draft.premierleague.com/api/league/18985/details"
     url = f"https://draft.premierleague.com/api/league/{league_id}/details"
 
     # store the response of URL 

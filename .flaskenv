@@ -1,1 +1,1 @@
-FLASK_APP=drafttheinsight.py
+FLASK_APP=draftinsights.py
