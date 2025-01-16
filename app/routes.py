@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template, request, flash, redirect, url_for
 from app import app
 from app.forms import LeagueIDForm
 import json
@@ -8,11 +8,21 @@ import pandas as pd
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('home.html', title='Home')
+    return render_template('find_league_id.html', title='Find league id')
+
+@app.route('/find_league_id')
+def find_league_id():
+    return render_template('find_league_id.html', title='Find league id')
+
 
 @app.route('/user_input_league_id', methods=['GET', 'POST'])
 def user_input_league_id():
+
     form = LeagueIDForm()
+
+    if form.validate_on_submit():
+        return redirect(url_for('success'))
+    
     return render_template('user_input_league_id.html', title='League ID Input', form=form)
 
 @app.route('/chart', methods=['GET', 'POST'])
@@ -36,7 +46,7 @@ def chart():
 
     # create dataframe of current standings
     s_df = pd.DataFrame(data_json['standings'])
-
+    print(s_df)
     s_df['player'] = s_df['league_entry'].apply(lambda x: id_name_map[x])
     player_initials = s_df['player'].values.tolist()
 

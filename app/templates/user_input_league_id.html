@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Enter your FPL Draft League ID in the text box below</h1>
+    <form action="{{ url_for('chart') }}"  method="post" validate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.league_id.label }}<br>
+            {{ form.league_id(size=32) }}<br>
+            {% for error in form.league_id.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
