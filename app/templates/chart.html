@@ -20,16 +20,16 @@ Chart.js Flask Example
     Chart.register(ChartDataLabels);
 
     const ctx3 = document.getElementById('scatterflask').getContext('2d');
+    var chart_labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
 
     const data_flask = {
-        //labels: ["1","2","3","1","2","3","1","2","3","4"],
+        labels: chart_labels,
         datasets: [{
             label: 'Scatter Dataset',
             data: {{ data_dict | tojson() }},
             backgroundColor: 'rgb(255, 99, 132)'
         }],
     };
-
 
     var scatterchart = new Chart(ctx3, {
         type: 'scatter',
@@ -44,6 +44,14 @@ Chart.js Flask Example
                     font: {
                         size: 40
                     }
+                },
+                datalabels: {
+                    display: true,
+                    align: 'start',
+                    color: 'blue',
+                    formatter: function(context, chart_obj) {
+                        return 'SAMPLE LABEL'
+                    }
                 }
             },
             scales: {
@@ -55,7 +63,6 @@ Chart.js Flask Example
                             size: 25
                         }
                     }
-                    
                 },
                 x: { 
                     title: {
@@ -65,10 +72,8 @@ Chart.js Flask Example
                             size: 25
                         }
                     }
-                    
                 }
             }
-            
         }
     })
 
