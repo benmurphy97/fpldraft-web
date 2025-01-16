@@ -2,8 +2,8 @@ Chart.js Flask Example
 
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+  
 
 
 <div class="row">
@@ -16,11 +16,8 @@ Chart.js Flask Example
 
 <script>
 
-    // import {Chart} from 'chart.js';
-    //import ChartDataLabels from 'chartjs-plugin-datalabels';
-
-    // Register the plugin to all charts:
-    //Chart.register(ChartDataLabels);
+    // Register the plugin to the Chart.js library
+    Chart.register(ChartDataLabels);
 
     const ctx3 = document.getElementById('scatterflask').getContext('2d');
 
