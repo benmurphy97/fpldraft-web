@@ -1,5 +1,3 @@
-Chart.js Flask Example
-
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
@@ -20,10 +18,10 @@ Chart.js Flask Example
     Chart.register(ChartDataLabels);
 
     const ctx3 = document.getElementById('scatterflask').getContext('2d');
-    var chart_labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+    var chart_labels = {{ labels | safe }}
 
     const data_flask = {
-        labels: chart_labels,
+        //labels: chart_labels,
         datasets: [{
             label: 'Scatter Dataset',
             data: {{ data_dict | tojson() }},
@@ -37,6 +35,7 @@ Chart.js Flask Example
 
         options: {
             radius: 6,
+            pointBackgroundColor: '#62A6F8',
             plugins: {
                 title: {
                     display: true,
@@ -48,9 +47,9 @@ Chart.js Flask Example
                 datalabels: {
                     display: true,
                     align: 'start',
-                    color: 'blue',
+                    color: '#214672',
                     formatter: function(context, chart_obj) {
-                        return 'SAMPLE LABEL'
+                        return chart_labels[chart_obj.dataIndex]
                     }
                 }
             },
