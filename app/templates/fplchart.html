@@ -1,0 +1,78 @@
+Chart.js Flask Example
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="row">
+    <div class="col-md-4"><!-- form/results will go here --></div>
+    <div class="col-md-8">
+        <h1>Visualize Scatter</h1>
+        <canvas id="scatterflask" width="40" height="10"></canvas>
+    </div>
+</div>
+
+<script>
+    const ctx = document.getElementById('scatterflask').getContext('2d');
+
+    const scatterdata = {
+        datasets: [{
+            label: 'Scatter Dataset',
+            data: {
+                { data_dict | tojson() }
+            },
+            backgroundColor: 'rgb(255, 99, 132)'
+        }]
+    };
+
+
+    var scatterchart = new Chart(ctx3, {
+        type: 'scatter',
+        data: scatterdata,
+        options: {
+
+        }
+    });
+
+</script>
+
+
+
+
+
+<div class="row">
+    <div class="col-md-4"><!-- form/results will go here --></div>
+    <div class="col-md-8">
+        <h1>Visualize Scatter</h1>
+        <canvas id="scatterchart" width="40" height="10"></canvas>
+    </div>
+</div>
+
+<script>
+    const ctx2 = document.getElementById('scatterchart').getContext('2d');
+    const scatterdata_ = {
+    datasets: [{
+        label: 'Scatter Dataset',
+        data: [{
+        x: -10,
+        y: 0
+        }, {
+        x: 0,
+        y: 10
+        }, {
+        x: 10,
+        y: 5
+        }, {
+        x: 0.5,
+        y: 5.5
+        }],
+        backgroundColor: 'rgb(255, 99, 132)'
+    }],
+    };
+
+    var scatterchart = new Chart(ctx2, {
+        type: 'scatter',
+        data: scatterdata_,
+        options: {
+
+        }
+    })
+</script>
