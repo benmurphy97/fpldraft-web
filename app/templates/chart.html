@@ -1,9 +1,7 @@
 Chart.js Flask Example
 
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 
@@ -17,10 +15,17 @@ Chart.js Flask Example
 </div>
 
 <script>
+
+    // import {Chart} from 'chart.js';
+    //import ChartDataLabels from 'chartjs-plugin-datalabels';
+
+    // Register the plugin to all charts:
+    //Chart.register(ChartDataLabels);
+
     const ctx3 = document.getElementById('scatterflask').getContext('2d');
 
     const data_flask = {
-
+        //labels: ["1","2","3","1","2","3","1","2","3","4"],
         datasets: [{
             label: 'Scatter Dataset',
             data: {{ data_dict | tojson() }},
@@ -32,10 +37,40 @@ Chart.js Flask Example
     var scatterchart = new Chart(ctx3, {
         type: 'scatter',
         data: data_flask,
-        labels: ["1","2","3","1","2","3","1","2","3","4"],
 
         options: {
             radius: 6,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Average weekly points for vs points against',
+                    font: {
+                        size: 40
+                    }
+                }
+            },
+            scales: {
+                y: { 
+                    title: {
+                        display: true,
+                        text: 'Average points against',
+                        font: {
+                            size: 25
+                        }
+                    }
+                    
+                },
+                x: { 
+                    title: {
+                        display: true,
+                        text: 'Average points for',
+                        font: {
+                            size: 25
+                        }
+                    }
+                    
+                }
+            }
             
         }
     })
