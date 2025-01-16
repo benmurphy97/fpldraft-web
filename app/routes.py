@@ -29,29 +29,7 @@ def generate_league_insights():
 
 @app.route('/chart')
 def chart():
-    # Define Plot Data 
-    x = [0, 10, 15, 8, 22, 18, 25]
-    y = [7, 8, 4, 6, 10, 2, 6]
-
-    data_dict = {"data_1": [1, 2, 3, 4], 
-                "data_2": [5, 6, 7, 8]}
-
-    data_dict = [{'x': -10, 'y': 0}, 
-                 {'x': 0, 'y': 10}, 
-                 {'x': 10, 'y': 5}, 
-                 {'x': 0.5, 'y': 5.5}
-                 ]
     
-    data_dict = [{'x': 41.8, 'y': 39.55}, 
-                 {'x': 42.55, 'y': 35.45}, 
-                 {'x': 44.85, 'y': 39.5}, 
-                 {'x': 43.45, 'y': 40.2}, 
-                 {'x': 38.1, 'y': 39.3}, 
-                 {'x': 37.9, 'y': 39.6},
-                 {'x': 41.7, 'y': 40.85}, 
-                 {'x': 34.25, 'y': 40.55}, 
-                 {'x': 36.5, 'y': 41.95}, 
-                 {'x': 35.15, 'y': 39.3}]
     # parameter for urlopen 
     url = "https://draft.premierleague.com/api/league/18985/details"
     
