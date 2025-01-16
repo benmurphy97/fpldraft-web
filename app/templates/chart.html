@@ -1,23 +1,22 @@
+{% extends "base.html" %}
 
+{% block content %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
-  
-
 
 <div class="row">
     <div class="col-md-4"><!-- form/results will go here --></div>
     <div class="col-md-8">
-        <h1>Visualize Scatter</h1>
-        <canvas id="scatterflask" width="20" height="10"></canvas>
+        <h1>Showing visualisations for league_id: {{ league_id }} </h1>
+        <canvas id="scatter_avg_points" width="20" height="10"></canvas>
     </div>
 </div>
 
 <script>
-
     // Register the plugin to the Chart.js library
     Chart.register(ChartDataLabels);
 
-    const ctx3 = document.getElementById('scatterflask').getContext('2d');
+    const ctx3 = document.getElementById('scatter_avg_points').getContext('2d');
     var chart_labels = {{ labels | safe }}
 
     const data_flask = {
@@ -42,7 +41,8 @@
                     text: 'Average weekly points for vs points against',
                     font: {
                         size: 40
-                    }
+                    },
+                    color: 'black'
                 },
                 datalabels: {
                     display: true,
@@ -60,7 +60,8 @@
                         text: 'Average points against',
                         font: {
                             size: 25
-                        }
+                        },
+                        color: 'black'
                     }
                 },
                 x: { 
@@ -69,11 +70,12 @@
                         text: 'Average points for',
                         font: {
                             size: 25
-                        }
+                        },
+                        color: 'black'
                     }
                 }
             }
         }
     })
-
 </script>
+{% endblock %}
