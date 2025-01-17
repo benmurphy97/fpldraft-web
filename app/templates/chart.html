@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-md-4"><!-- form/results will go here --></div>
     <div>
-        <h1>Showing visualisations for league_id: {{ league_id }} </h1>
+        <h1>Showing Visualisations for League ID: {{ league_id }} </h1>
         <canvas id="scatter_avg_points" width="20" height="10"></canvas>
     </div>
 </div>
@@ -19,7 +19,7 @@
     const data_flask = {
         //labels: chart_labels,
         datasets: [{
-            label: 'Scatter Dataset',
+            // label: 'Scatter Dataset',
             data: {{ data_dict | tojson() }},
             backgroundColor: 'rgb(255, 99, 132)',
             
