@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
 <div class="row">
@@ -9,6 +11,33 @@
         <canvas id="scatter_avg_points" width="20" height="10"></canvas>
     </div>
 </div>
+
+
+
+<h1>Expected Standings</h1>
+
+   <table>
+      <thead>
+      <tr>
+          {% for col in column_names %}
+          <th>{{col}}</th>
+          {% endfor %}
+      </tr>
+      </thead>
+      <tbody>
+      {% for row in row_data %}
+      <tr>
+          {% for col, row_ in zip(column_names, row) %}
+          <td>{{row_}}</td>
+          {% endfor %}
+      </tr>
+      {% endfor %}
+      </tbody>
+  
+  </table>
+
+
+
 <script>
     // Register the plugin to the Chart.js library
     Chart.register(ChartDataLabels);
