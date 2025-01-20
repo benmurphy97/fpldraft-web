@@ -161,3 +161,35 @@ def chart():
     else:
         flash('Only head-to-head leagues are currently supported. Try again with a different League ID.')
         return redirect(url_for('user_input_league_id'))
+
+
+
+@app.route('/rugby_matches')
+def rugby_matches():
+
+
+    # Fixtures with odds
+    # TODO find out what date the matches were on - join on match time, home and away team
+    odds = pd.read_csv("urc_latest_results_odds.csv")
+    odds_row_data=list(odds.values.tolist())
+    odds_col_names = odds.columns.values
+
+
+    # get what the predictions were for the past matches
+
+
+
+
+
+
+    return render_template('rugby_matches.html', 
+                           title='Rugby Matches',
+                            column_names=odds_col_names, 
+                            row_data=odds_row_data,
+                            zip=zip)
+
+
+@app.route('/rugby_season_simulation')
+def rugby_season_simulation():
+    return render_template('rugby_season_simulation.html', 
+                           title='Rugby Season Simulation')
