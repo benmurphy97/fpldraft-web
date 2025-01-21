@@ -7,7 +7,6 @@ import pandas as pd
 
 
 @app.route('/')
-@app.route('/index')
 @app.route('/user_input_league_id', methods=['GET', 'POST'])
 def user_input_league_id():
 
