@@ -12,4 +12,22 @@
         </p>
         <p>{{ form.submit() }}</p>
     </form>
+    <div>
+        <h1>How to find your FPL Draft Lague ID?</h1>
+        <p>
+            Caveat: Private or incognito browsers may not be able to retrieve the desired data. <br>
+            The links on this page are provided by the offical Fantasy Premier League website.<br>
+    
+            <h4>Step 1:</h4>Login to FPL Draft in your browser and leave this tab open: <a href="https://draft.premierleague.com" target="_blank">https://draft.premierleague.com</a>
+            <br><br>
+            <h4>Step 2:</h4> Open this link in a new tab in the same browser as step 1: <a href="https://draft.premierleague.com/api/bootstrap-dynamic" target="_blank">https://draft.premierleague.com/api/bootstrap-dynamic</a>
+            <br><br>
+            <h4>Step 3:</h4> If successful, some text will appear in your browser tab and you will see your email address, name, region etc. If you dont see these things, try step 1 and 2 again.
+            <br><br>
+            <h4>Step 4:</h4> Within this text, find where it says "leagues". You can use Ctrl+f or scroll until you see it. 
+            The leagues you are in will be listed here. It should look like this:<br>"leagues":[{"id":4815162342,"name":"Best League Ever","scoring":"h"}] - your id and name values will be different.
+            <br><br>
+            <h4>Step 5:</h4> The id value you see from Step 4 is your FPL Draft League ID. If you are in multiple leagues, choose the id from the league you want to get insights for.
+        </p>
+    </div>
 {% endblock %}
