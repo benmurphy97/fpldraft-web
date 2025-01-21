@@ -8,10 +8,6 @@ import pandas as pd
 
 @app.route('/')
 @app.route('/index')
-def index():
-    return render_template('user_input_league_id.html', title='Find league id')
-
-
 @app.route('/user_input_league_id', methods=['GET', 'POST'])
 def user_input_league_id():
 
