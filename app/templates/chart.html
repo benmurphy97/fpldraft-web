@@ -4,19 +4,31 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
-<div class="row">
-    <div class="col-md-4"><!-- form/results will go here --></div>
-    <div>
-        <h1>Showing Visualisations for League ID: {{ league_id }} </h1>
-        <canvas id="scatter_avg_points" width="20" height="10"></canvas>
+<section>
+    <h1>Showing Visualisations for League ID: {{ league_id }} </h1>
+</section>
+<section>
+    <div class="row">
+        <div class="col-md-4"><!-- form/results will go here --></div>
+        <div>
+            <canvas id="scatter_avg_points" width="20" height="12"></canvas>
+        </div>
     </div>
-</div>
-
+</section>
 <br><br>
 
-<h1>Expected Standings</h1>
+<section>
+    <h1>Expected League Table</h1>
+    <p>Expected points are used to determine how lucky or unlucky each player is. 
+       For a head-to-head league in any given week, if you score the most fpl points, your expected points are 3 i.e. no one can beat you. 
+       If you score the 3rd highest fpl points in a 10 person league, you beat 7 people but lose to 2 
+       so your expected points work out as 7/(7+2) * 3 = 2.33.
+       Add the expected points for each player every week and you get the expected league table.
+       The over/under performance determines how lucky/unlucky players are.
 
-   <table>
+
+    </p>
+    <table>
       <thead>
       <tr>
           {% for col in column_names %}
@@ -34,7 +46,11 @@
       {% endfor %}
       </tbody>
   
-  </table>
+    </table>
+</section>
+
+
+
 
 
 
@@ -58,14 +74,14 @@
         type: 'scatter',
         data: data_flask,
         options: {
-            radius: 6,
+            radius: 3,
             pointBackgroundColor: '#62A6F8',
             plugins: {
                 title: {
                     display: true,
                     text: 'Average weekly points for vs points against',
                     font: {
-                        size: 30
+                        size: 20
                     },
                     color: 'black'
                 },
@@ -75,6 +91,9 @@
                     color: '#214672',
                     formatter: function(context, chart_obj) {
                         return chart_labels[chart_obj.dataIndex]
+                    },
+                    font: {
+                        size: 10
                     }
                 },
                 legend: {
