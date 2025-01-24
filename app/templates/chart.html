@@ -5,9 +5,11 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
 <section>
-    <h1>Showing Visualisations for League ID: {{ league_id }} </h1>
+    <h2>Showing Visualisations for "{{ league_name }}" - League ID: {{ league_id }} </h2>
 </section>
+<hr>
 <section>
+    <h1>Average Weekly Points For vs Points Against</h1>
     <div class="row">
         <div class="col-md-4"><!-- form/results will go here --></div>
         <div>
@@ -15,19 +17,10 @@
         </div>
     </div>
 </section>
-<br><br>
-
+<hr>
 <section>
     <h1>Expected League Table</h1>
-    <p>Expected points are used to determine how lucky or unlucky each player is. 
-       For a head-to-head league in any given week, if you score the most fpl points, your expected points are 3 i.e. no one can beat you. 
-       If you score the 3rd highest fpl points in a 10 person league, you beat 7 people but lose to 2 
-       so your expected points work out as 7/(7+2) * 3 = 2.33.
-       Add the expected points for each player every week and you get the expected league table.
-       The over/under performance determines how lucky/unlucky players are.
-
-
-    </p>
+    <p>Expected points explained below the table</p>
     <table>
       <thead>
       <tr>
@@ -45,8 +38,15 @@
       </tr>
       {% endfor %}
       </tbody>
-  
     </table>
+    <br>
+    <p>Expected points are used to determine how lucky or unlucky each player is. 
+        For a head-to-head league in any given gameweek, if you score the most fpl points, your expected points are 3 because no one can beat you. 
+        In a gameweek, if you score the 3rd highest fpl points in a 10 person league, you beat 7 people but lose to 2 
+        so your expected points work out as 7/(7+2) * 3 = 2.33.
+        Add the expected points for each player every week and you get the expected league table.
+        The over/under performance determines how lucky/unlucky players are.
+     </p>
 </section>
 
 
@@ -78,7 +78,7 @@
             pointBackgroundColor: '#62A6F8',
             plugins: {
                 title: {
-                    display: true,
+                    display: false,
                     text: 'Average weekly points for vs points against',
                     font: {
                         size: 20
